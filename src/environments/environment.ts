@@ -5,12 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyCxsqKMWNdD1MmQpqMy5hTT91MLlGiC-zo',
-    authDomain: 'casadejesus-67958.firebaseapp.com',
-    databaseURL: 'https://casadejesus-67958.firebaseio.com',
-    projectId: 'casadejesus-67958',
-    storageBucket: '',
-    messagingSenderId: '904667359185'
+  
   }
 };
 
