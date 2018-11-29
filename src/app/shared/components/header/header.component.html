@@ -1,0 +1,19 @@
+<nav>
+  <ul>
+    <li routerLinkActive="active">
+      <a routerLink="/home">Home</a>
+    </li>
+    <li routerLinkActive="active" class="d-none d-sm-inline-block">
+      <a routerLink="/brechos">Brechós</a>
+    </li>
+    <li routerLinkActive="active" class="d-none d-sm-inline-block">
+      <a routerLink="/products">Produtos</a>
+    </li>
+    <li routerLinkActive="active" class="d-none d-sm-inline-block">
+      <a routerLink="/pdv">Vendas</a>
+    </li>
+    <li routerLinkActive="active" class="d-none d-sm-inline-block" *ngIf="authService.loggedUser.adm === 'Sim'">
+      <a routerLink="/users">Usuários</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Produtos</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="confirm(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-3 mt-3" *ngFor="let product of products$ | async" (click)="confirm(product)">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">{{ product.codigo }}</p>
+          <span class="price">R$ {{ product.preco }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="confirm(false)">Fechar</button>
+</div>

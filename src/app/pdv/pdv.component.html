@@ -1,0 +1,74 @@
+<h1>Realizar Venda</h1>
+<a routerLink="/pdv" class="float-right btn btn-primary btn-lg link ml-3">Lista de vendas</a>
+<button class="btn btn-success btn-lg float-right" (click)="finalizeSale()" [disabled]="validateSale()">Finalizar</button>
+
+<form (ngSubmit)="addProduct()" class="mt-5">
+
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-2">
+      <label>Total de Items</label>
+      <input class="form-control text-right" name="total-items" [ngModel]="totalItems" readonly required>
+    </div>
+    <div class="col-2">
+      <label>Total Bruto</label>
+      <input currencyMask class="form-control" name="gross-total" [ngModel]="sale.valorBruto" readonly required>
+    </div>
+    <div class="col-2">
+      <label>Desconto</label>
+      <input currencyMask class="form-control" name="discount" [(ngModel)]="sale.desconto" (keyup)="calculaTotal()">
+    </div>
+    <div class="col-2">
+      <label>Total Líquido</label>
+      <input currencyMask class="form-control" name="net-total" [ngModel]="sale.valorLiquido" readonly required>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-1 col-sm-2">
+      <label *ngIf="adding">Adicionar</label>
+      <label *ngIf="!adding">Remover</label>
+      <ui-switch [(ngModel)]="adding" name="saving" defaultBgColor="red" color="green" (click)="codInput.focus()"></ui-switch>
+    </div>
+    <div class="col-md-2 col-sm-3">
+      <label>Quantidade</label>
+      <input autocomplete="off" type="number" class="form-control" name="amount" [(ngModel)]="selectedProduct.quantidade"
+        (input)="calculateTotalProduto()" (blur)="setAmount()">
+    </div>
+    <div class="col-md-3 col-sm-4">
+      <label>Código do produto</label>
+      <input #codInput autofocus autocomplete="off" type="text" class="form-control" name="code" [(ngModel)]="productCode"
+        (input)="productCode$.next($event.target.value)">
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <button type="button" class="btn btn-primary search-button" (click)="productModal()"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-5">
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group-item mb-2" *ngFor="let item of sale.produtos.slice().reverse()">
+          <div class="row pdv-item">
+            <div class="col-3">
+              <small>Produto</small>
+              <span class="value">{{ item.produto.codigo }}</span>
+            </div>
+            <div class="col-3">
+              <small>Quantidade</small>
+              <span class="value">{{ item.quantidade}}</span>
+            </div>
+            <div class="col-3">
+              <small>Preço</small>
+              <span class="value">{{ item.produto.preco | currency: 'R$' }}</span>
+            </div>
+            <div class="col-3">
+              <small>Valor total</small>
+              <span class="value">{{ item.valorTotal | currency: 'R$' }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

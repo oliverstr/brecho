@@ -1,0 +1,8 @@
+<h1>Produtos</h1>
+<ng2-smart-table 
+  [settings]="settings"
+  [source]="data"
+  (createConfirm)="create($event)"
+  (editConfirm)="edit($event)"
+  (deleteConfirm)="delete($event)"
+  ></ng2-smart-table>

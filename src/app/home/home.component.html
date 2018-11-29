@@ -1,0 +1,66 @@
+<h1>Vendas</h1>
+<div class="row" *ngIf="authService.loggedUser.adm === 'Sim'">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>Total vendas</strong> {{ calculateResult(sales).totalVendas}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total items</strong> {{ calculateResult(sales).totalItems}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total bruto</strong> {{ calculateResult(sales).totalBruto | currency: 'R$'}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total descontos</strong> {{ calculateResult(sales).totalDesconto | currency: 'R$'}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total líquido</strong> {{ calculateResult(sales).totalLiquido | currency: 'R$'}}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row mt-5">
+    <div class="col-xs-12 col-sm-12 col-md-4" *ngFor="let saleByDate of salesByDate">
+      <h3>{{ saleByDate.data }}</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Total vendas</strong> {{ saleByDate.result.totalVendas }}
+        </li>
+        <li class="list-group-item">
+          <strong>Total items</strong> {{ saleByDate.result.totalItems}}
+        </li>
+        <li class="list-group-item">
+          <strong>Total bruto</strong> {{ saleByDate.result.totalBruto | currency: 'R$'}}
+        </li>
+        <li class="list-group-item">
+          <strong>Total descontos</strong> {{ saleByDate.result.totalDesconto | currency: 'R$'}}
+        </li>
+        <li class="list-group-item">
+          <strong>Total líquido</strong> {{ saleByDate.result.totalLiquido | currency: 'R$'}}
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="row mt-5 mb-5">
+  <div class="col-xs-12 col-sm-12 col-md-4" *ngFor="let saleByUser of salesByUser">
+    <h3>{{ saleByUser.user }}</h3>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>Total vendas</strong> {{ saleByUser.result.totalVendas }}
+      </li>
+      <li class="list-group-item">
+        <strong>Total items</strong> {{ saleByUser.result.totalItems}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total bruto</strong> {{ saleByUser.result.totalBruto | currency: 'R$'}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total descontos</strong> {{ saleByUser.result.totalDesconto | currency: 'R$'}}
+      </li>
+      <li class="list-group-item">
+        <strong>Total líquido</strong> {{ saleByUser.result.totalLiquido | currency: 'R$'}}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+nav {
+    height: 100%;
+  ul {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: inline-block;
+      padding: 20px 15px;
+      border-bottom: 4px solid transparent;
+      box-sizing: border-box;
+      cursor: pointer;
+      &:hover, &.active{
+          border-bottom-color: white;
+      }
+      a {
+          color: white;
+          &:hover{
+              text-decoration: none;
+              color: inherit;
+          }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<h1>Vendas</h1>
+<a routerLink="/pdv/new" class="float-right btn btn-primary btn-lg link">Nova venda</a>
+<div class="row mt-5">
+  <div class="col-12">
+    <ul class="list-group">
+      <li class="list-group-item mb-2" *ngFor="let sale of sales">
+        <div class="row sale-item">
+          <div class="col-2 info-column">
+            <small>Vendedor</small>
+            <span class="value max-size" [tooltip]="sale.user">{{ sale.user }}</span>
+          </div>
+          <div class="col-2 info-column">
+            <small>Data</small>
+            <span class="value">{{ sale.date | date: 'short' }}</span>
+          </div>
+          <div class="col-2 info-column">
+            <small>Valor bruto</small>
+            <span class="value">{{ sale.valorBruto | currency: 'R$' }}</span>
+          </div>
+          <div class="col-2 info-column">
+            <small>Desconto</small>
+            <span class="value">{{ sale.desconto | currency: 'R$' }}</span>
+          </div>
+          <div class="col-2 info-column">
+            <small>Valor total</small>
+            <span class="value">{{ sale.valorLiquido | currency: 'R$' }}</span>
+          </div>
+          <div class="col-2 d-flex justify-content-around align-items-center">
+            <a [routerLink]="['new', sale.key]" class="btn btn-primary btn-sm mt-1" tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
+            <a class="btn btn-danger btn-sm mt-1" (click)="removeSale(sale)" style="color: white" tooltip="Remover"><i
+                class="fas fa-trash-alt"></i></a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

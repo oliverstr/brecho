@@ -1,0 +1,26 @@
+h1{
+  display: inline;
+}
+
+.link{
+  color: white;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.search-button {
+  margin-top: 30px;
+}
+
+.pdv-item {
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .value{
+      font-size: 28px;
+    }
+  }
+}

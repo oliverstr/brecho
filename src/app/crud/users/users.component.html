@@ -1,0 +1,8 @@
+<h1>Usuários</h1>
+<ng2-smart-table 
+  [settings]="settings"
+  [source]="data$ | async"
+  (createConfirm)="create($event)"
+  (editConfirm)="edit($event)"
+  (deleteConfirm)="delete($event)"
+  ></ng2-smart-table>
